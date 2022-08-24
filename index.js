@@ -19,7 +19,7 @@ app.get('/alunos', (req, res)=>{
 /* rota para exibir um unido aluno */
 app.get('/alunos/:id', (req, res)=>{
     res.send(`Exibir dados de UM aluno.`);
-    res.render(`alunos/:id`);
+    /* res.render(`alunos/:id`); */
 });
 
 /* rota  */
