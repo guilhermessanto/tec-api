@@ -1,19 +1,25 @@
-import express from 'express';
+import express from "express";
+import { ler } from "./src/aluno.js";
 const app = express();
 const porta = 3000;
 
+/* configurando suporte ao formato json */
+app.use(express.json());
+
+/* Configurar suporte a dados de inputs de formularios */
+app.use(express.urlencoded({extended:true}));
 
 /* Rotas */
 /* rota (endpoint) para a raiz da API */
 app.get('/', (req, res)=>{
-    res.send(`É um dia lindo para aprender sobre APIs.`);
+    res.send(`página inicial da aplicação`);
  /*    res.render(`index`); */
 });
 
 /* rota para exibir todos os alunos */
 app.get('/alunos', (req, res)=>{
-    res.send(`Exibir todos os alunos.`);
-   /*  res.render(`alunos`); */
+    /* res.send(`Exibir todos os alunos.`); */
+    ler(res);
 });
 
 /* rota para exibir um unido aluno */
