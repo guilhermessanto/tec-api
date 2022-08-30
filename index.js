@@ -1,5 +1,5 @@
 import express from "express";
-import { ler,inserir } from "./src/aluno.js";
+import { ler,inserir, lerUm, atualizar } from "./src/aluno.js";
 const app = express();
 const porta = 3000;
 
@@ -24,8 +24,9 @@ app.get('/alunos', (req, res)=>{
 
 /* rota para exibir um unido aluno */
 app.get('/alunos/:id', (req, res)=>{
-    res.send(`Exibir dados de UM aluno.`);
-    /* res.render(`alunos/:id`); */
+    /* res.send(`Exibir dados de UM aluno.`); */
+    const id = parseInt(req.params.id);
+    lerUm(id,res);
 });
 
 /* rota  */
@@ -48,7 +49,10 @@ app.put('/alunos/:id', (req, res)=>{
 /* rota para atualizar alguns/todos alunos */
 app.patch('/alunos/:id', (req, res)=>{
     
-    res.send(`atualizar alguns/todos alunos`);
+   /*  res.send(`atualizar alguns/todos alunos`); */
+   const id = parseInt(req.params.id);
+   const aluno = req.body;
+   atualizar(id,aluno,res);
 });
 
 /* rota para excluir alunos */
