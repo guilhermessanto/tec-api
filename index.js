@@ -1,5 +1,5 @@
 import express from "express";
-import { ler } from "./src/aluno.js";
+import { ler,inserir } from "./src/aluno.js";
 const app = express();
 const porta = 3000;
 
@@ -31,7 +31,12 @@ app.get('/alunos/:id', (req, res)=>{
 /* rota  */
 app.post('/alunos', (req, res)=>{
     
-    res.send(`Inserir alunos.`);
+    /* res.send(`Inserir alunos.`); */
+    /* capturando os dados a partir do corpo da requisição */
+    const novoAluno = req.body;
+    /* executando a função inserir e passando os parâmetros novoAluno e res */
+    inserir(novoAluno,res);
+    
 });
 
 /* rota para atualizar todos os alunos */
